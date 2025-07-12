@@ -1,0 +1,12 @@
+@if (chartOptions()) {
+<apx-chart
+  [series]="chartOptions().series || []"
+  [chart]="chartOptions().chart ?? { type: 'line', height: 300 }"
+  [xaxis]="chartOptions().xaxis ?? { categories: [] }"
+  [dataLabels]="chartOptions().dataLabels ?? { enabled: false }"
+  [stroke]="chartOptions().stroke ?? { curve: 'smooth' }"
+  [tooltip]="chartOptions().tooltip ?? { enabled: true }"
+  [markers]="markersConfig()"
+  [fill]="chartOptions().fill ?? {}"
+/>
+}

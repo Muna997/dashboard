@@ -1,0 +1,81 @@
+<section class="px-6 sm:p-8 min-h-screen">
+  <h1 class="section-title">Add Team Member</h1>
+
+  <div class="mx-auto bg-white rounded-2xl shadow p-8 border border-gray-200">
+    <form
+      [formGroup]="addMemberForm"
+      (ngSubmit)="onSubmit()"
+      role="form"
+      aria-labelledby="add-member-heading"
+      class="max-w-5xl mx-auto bg-white p-10"
+    >
+      <!-- Upload Section -->
+      <div class="flex flex-col items-center mb-10">
+        <div
+          class="w-20 h-20 rounded-full bg-gray-100 flex items-center justify-center mb-2"
+        >
+          <mat-icon class="text-gray-500 text-3xl">photo_camera</mat-icon>
+        </div>
+        <label
+          for="photoUpload"
+          class="text-blue-600 cursor-pointer text-sm hover:underline"
+          aria-label="Upload team member photo"
+        >
+          Upload Photo
+        </label>
+        <input type="file" id="photoUpload" hidden accept="image/*" />
+      </div>
+
+      <!-- Form Fields in Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-10 mb-6 px-4">
+        <app-form-input
+          formControlName="firstName"
+          label="First Name"
+          placeholder="Enter your first name"
+        />
+        <app-form-input
+          formControlName="lastName"
+          label="Last Name"
+          placeholder="Enter your last name"
+        />
+        <app-form-input
+          formControlName="email"
+          type="email"
+          label="Email"
+          placeholder="Enter your email"
+        />
+        <app-form-input
+          formControlName="phone"
+          type="tel"
+          label="Phone"
+          placeholder="Enter your phone number"
+        />
+        <app-form-input
+          formControlName="position"
+          label="Position"
+          placeholder="CEO"
+        />
+        <app-form-input
+          formControlName="gender"
+          type="select"
+          label="Gender"
+          [options]="[
+            { label: 'Male', value: 'Male' },
+            { label: 'Female', value: 'Female' }
+          ]"
+        />
+      </div>
+
+      <!-- Submit Button -->
+      <div class="flex justify-center mt-10">
+        <button
+          type="submit"
+          [disabled]="addMemberForm.invalid"
+          class="bg-[#4D7CFE] text-white font-medium px-10 py-3 rounded-full hover:bg-blue-600 transition"
+        >
+          Add Now
+        </button>
+      </div>
+    </form>
+  </div>
+</section>

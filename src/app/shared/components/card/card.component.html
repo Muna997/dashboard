@@ -1,0 +1,61 @@
+<!-- Card Container -->
+<div
+  class="flex justify-between items-start p-5 bg-white rounded-2xl shadow-sm w-full min-w-[240px] transition duration-300 hover:shadow-md transition-transform duration-300 ease-in-out hover:scale-[1.03]"
+>
+  <!-- Left Side: Textual Info -->
+  <div class="flex flex-col gap-2">
+    <!-- Title (e.g. 'Revenue') -->
+    <p class="text-gray-500 text-sm font-medium">
+      {{ title() }}
+    </p>
+
+    <!-- Main Value (e.g. '$12.3k') -->
+    <h2 class="text-[28px] font-bold text-gray-900">
+      {{ value() }}
+    </h2>
+
+    <!-- Subtitle with optional trend icon -->
+    <div class="flex items-center gap-1 text-sm mt-1">
+      <!-- Conditional colored subtitle (green or red) -->
+      @if (hasColoredSubtitle()) {
+      <span
+        class="flex items-center gap-1"
+        [ngClass]="{
+          'text-green-500': isGreen(),
+          'text-red-500': isRed()
+        }"
+      >
+        <!-- Trend icon based on value direction -->
+        <mat-icon class="text-base" aria-hidden="true">
+          {{ isGreen() ? "trending_up" : "trending_down" }}
+        </mat-icon>
+        <span>{{ subtitleMain() }}</span>
+      </span>
+      }
+
+      <!-- Remaining subtitle text (neutral) -->
+      <span class="text-gray-500">
+        {{ subtitleRest() }}
+      </span>
+    </div>
+  </div>
+
+  <!-- Right Side: Icon Box -->
+  <div>
+    <mat-icon
+      [ngStyle]="{
+        backgroundColor: backgroundColor(),
+        color: iconColor(),
+        borderRadius: '23px',
+        width: '60px',
+        height: '60px',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        fontSize: '30px'
+      }"
+    >
+      {{ icon() }}
+    </mat-icon>
+  </div>
+</div>

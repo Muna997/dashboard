@@ -1,0 +1,66 @@
+<!-- Sidebar (sidenav) -->
+<aside
+  class="h-screen bg-white shadow-md flex flex-col justify-between transition-all duration-300"
+  [ngClass]="{ 'w-58': opened(), 'w-0 overflow-hidden': !opened() }"
+>
+  <!-- Show content only if sidebar is open -->
+  @if (opened()) {
+  <div>
+    <!-- Sidebar header with logo/text -->
+    <div class="p-6 text-xl font-bold text-blue-600 flex justify-center">
+      Dash<span class="text-[#202224]">Stack</span>
+    </div>
+
+    <!-- Main navigation section -->
+    <nav
+      class="px-5 text-[#202224] text-[14px] flex flex-col space-y-1"
+      role="navigation"
+    >
+      @for (item of sidenavItems; track item.label) {
+
+      <!-- Optional section label with divider -->
+      @if (item.section) {
+      <div class="w-full my-2">
+        <div class="border-t border-gray-200 mx-[-20px]"></div>
+      </div>
+      <div
+        class="mt-1 mb-3 px-3 text-xs text-[#202224] uppercase tracking-wider"
+      >
+        {{ item.section }}
+      </div>
+      }
+
+      <!-- Navigation link -->
+      <a
+        [routerLink]="item.route"
+        routerLinkActive="text-white bg-[#4880FF]"
+        [routerLinkActiveOptions]="{ exact: true }"
+        class="flex items-center gap-3 px-3 py-2 rounded-md hover:text-white hover:bg-[#4880FF] transition-colors duration-200"
+      >
+        <mat-icon class="!text-xl !align-middle !relative !bottom-[1px]">
+          {{ item.icon }}
+        </mat-icon>
+        <span class="text-sm">{{ item.label }}</span>
+      </a>
+      }
+    </nav>
+  </div>
+
+  <!-- Footer links (bottom of sidenav) -->
+  <div
+    class="p-4 border-t border-gray-200 text-sm text-[#202224] font-semibold space-y-2"
+  >
+    @for (item of footerItems; track item.label) {
+    <a
+      [routerLink]="item.route"
+      class="flex items-center gap-3 px-3 py-2 rounded-md hover:text-white hover:bg-[#4880FF] transition-colors duration-200"
+    >
+      <mat-icon class="!text-xl !align-middle !relative !bottom-[1px]">
+        {{ item.icon }}
+      </mat-icon>
+      <span class="text-sm font-normal">{{ item.label }}</span>
+    </a>
+    }
+  </div>
+  }
+</aside>

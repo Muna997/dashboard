@@ -1,0 +1,16 @@
+<!-- App Wrapper: Full height + flex container -->
+<div class="flex h-screen overflow-hidden relative">
+  <!-- Sidebar (sidenav) -->
+  <app-sidenav [opened]="isSidebarOpen"></app-sidenav>
+
+  <!-- Main Content Area -->
+  <div class="flex-1 min-w-0 flex flex-col">
+    <!-- Header / Top Navbar -->
+    <app-header (toggleMenu)="toggleSidebar()"></app-header>
+
+    <!-- Main content area (router outlet) -->
+    <main class="bg-[#F5F6FA] flex-1 overflow-auto" role="main">
+      <router-outlet></router-outlet>
+    </main>
+  </div>
+</div>

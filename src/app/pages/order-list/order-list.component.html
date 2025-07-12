@@ -1,0 +1,54 @@
+<section class="p-6 bg-[#f8f9fb] min-h-screen">
+  <h1 class="section-title">Order Lists</h1>
+
+  <!-- Filter Bar -->
+  <div
+    class="inline-flex flex-wrap items-center text-sm border border-gray-200 mb-7 rounded-xl bg-[#f9fafb] gap-3 sm:gap-4"
+    aria-label="Filter Options"
+  >
+    <!-- Filter Icon -->
+    <div class="filter-item">
+      <mat-icon class="text-black" aria-hidden="true">filter_alt</mat-icon>
+    </div>
+
+    <!-- Filter By Label -->
+    <div class="filter-item">
+      <span class="font-semibold text-black">Filter By</span>
+    </div>
+
+    <!-- Date Filter -->
+    <button class="filter-item" aria-label="Filter by Date" type="button">
+      <span class="text-black">Date</span>
+      <mat-icon>expand_more</mat-icon>
+    </button>
+
+    <!-- Order Type -->
+    <button class="filter-item" aria-label="Filter by Order Type" type="button">
+      <span class="text-black">Order Type</span>
+      <mat-icon>expand_more</mat-icon>
+    </button>
+
+    <!-- Order Status -->
+    <button
+      class="filter-item"
+      aria-label="Filter by Order Status"
+      type="button"
+    >
+      <span class="text-black">Order Status</span>
+      <mat-icon>expand_more</mat-icon>
+    </button>
+
+    <!-- Reset Filter -->
+    <button
+      class="flex items-center gap-2 text-red-500 cursor-pointer hover:underline px-5 py-2.5"
+      type="button"
+      aria-label="Reset All Filters"
+    >
+      <mat-icon>refresh</mat-icon>
+      <span>Reset Filter</span>
+    </button>
+  </div>
+
+  <!-- Table Component -->
+  <app-table [columns]="columns" [data]="orders" />
+</section>

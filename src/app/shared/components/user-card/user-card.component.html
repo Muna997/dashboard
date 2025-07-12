@@ -1,0 +1,20 @@
+<div
+  class="min-w-xs min-h-80 bg-white bg-cover bg-center rounded-2xl shadow-md gap-6 flex flex-col justify-center items-center text-center transition-transform duration-300 ease-in-out hover:scale-[1.03]"
+  style="background-image: url('/Pattern.png')"
+>
+  <!-- Avatar Image -->
+  <img
+    [src]="user()?.avatar"
+    alt="avatar"
+    class="w-24 h-24 rounded-full object-cover"
+  />
+
+  <!-- User Info -->
+  <div>
+    <p class="text-base font-bold text-[#202224]">
+      {{ user()?.name }}
+    </p>
+    <p class="text-sm text-gray-500">{{ user()?.role }}</p>
+    <p class="text-sm text-gray-500 break-all">{{ user()?.email }}</p>
+  </div>
+</div>

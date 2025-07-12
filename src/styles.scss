@@ -1,1 +1,33 @@
 /* You can add global styles to this file, and also import other style files */
+@import "tailwindcss";
+
+@theme {}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.input-style {
+    @apply bg-[#F5F6FA] border border-[#E1E1E1] text-[#202224] text-sm rounded-lg placeholder-[#B9B9B9] focus:outline-none block w-full p-3.5;
+}
+
+.label-style {
+    @apply block mb-2 text-sm text-[#606060];
+}
+
+.filter-item {
+    @apply flex items-center gap-2 border-r border-gray-200 p-5 bg-transparent cursor-pointer rounded-md;
+}
+
+.section-title {
+    font-size: 1.875rem !important;
+    font-weight: 700 !important;
+    color: #202224 !important;
+    margin-bottom: 2.5rem !important;
+}

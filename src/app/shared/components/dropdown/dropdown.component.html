@@ -1,0 +1,56 @@
+<div class="relative text-sm font-medium">
+  <!-- Trigger -->
+  <div
+    class="flex items-center px-0 py-2 rounded-xl bg-white cursor-pointer gap-1 md:gap-3"
+    (click)="toggleDropdown()"
+    role="button"
+    tabindex="0"
+    (keydown.enter)="toggleDropdown()"
+    aria-haspopup="true"
+  >
+    <!-- User Image (always visible) -->
+    <img
+      [src]="user()?.avatar"
+      alt="User"
+      class="w-8 h-8 rounded-full object-cover"
+    />
+
+    <!-- Name + Role (hidden on small, shown on md+) -->
+    <div class="hidden md:flex flex-col text-left">
+      <span class="text-[#404040] font-medium">{{ user()?.name }}</span>
+      <span class="text-[#646464] text-xs font-normal">{{ user()?.role }}</span>
+    </div>
+
+    <!-- Arrow Icon (hidden on small, shown on md+) -->
+    <mat-icon
+      class="hidden md:inline ml-1 !text-[#646464] !text-base font-normal"
+      aria-hidden="true"
+    >
+      {{ isOpen ? "keyboard_arrow_up" : "keyboard_arrow_down" }}
+    </mat-icon>
+  </div>
+
+  <!-- Dropdown -->
+  @if (isOpen) {
+  <div
+    class="absolute right-0 mt-2 bg-white rounded-xl shadow-md z-10 min-w-[160px] w-max"
+    role="menu"
+  >
+    @for (item of items(); track item.value) {
+    <div
+      class="flex items-center px-3 py-2 hover:bg-gray-100 cursor-pointer gap-2"
+      (click)="selectItem(item)"
+      role="menuitem"
+      tabindex="0"
+    >
+      <mat-icon class="text-gray-500 text-sm md:text-base" aria-hidden="true">
+        {{ item.icon }}
+      </mat-icon>
+      <span class="text-xs md:text-sm text-[#404040] font-medium">
+        {{ item.label }}
+      </span>
+    </div>
+    }
+  </div>
+  }
+</div>

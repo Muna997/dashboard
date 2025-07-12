@@ -1,0 +1,26 @@
+<div>
+  <label class="label-style">{{ label() }}</label>
+
+  @switch (type()) { @case ('select') {
+  <select
+    [disabled]="isDisabled"
+    [value]="value()"
+    (change)="handleInput($event)"
+    class="input-style"
+  >
+    <option value="" class="text-[#B9B9B9]">Select {{ label() }}</option>
+    @for (option of options(); track option.value) {
+    <option [value]="option.value">{{ option.label }}</option>
+    }
+  </select>
+  } @default {
+  <input
+    [type]="type()"
+    [placeholder]="placeholder()"
+    [disabled]="isDisabled"
+    [value]="value()"
+    (input)="handleInput($event)"
+    class="input-style"
+  />
+  } }
+</div>

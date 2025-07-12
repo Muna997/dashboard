@@ -1,0 +1,38 @@
+<!-- Main section container with padding and minimum height -->
+<section class="px-6 sm:p-8 min-h-screen">
+  <!-- Header: Title and Add Member Button -->
+  <div class="flex justify-between items-center mb-6">
+    <h1 class="!text-3xl !font-bold text-[#202224]">Team</h1>
+    <button
+      (click)="onNewUser()"
+      aria-label="Add new team member"
+      class="bg-blue-500 text-white font-medium py-2 px-4 rounded-lg shadow hover:bg-blue-600 transition"
+    >
+      Add New Member
+    </button>
+  </div>
+
+  <!-- If users data is available -->
+  @if (users$ | async; as users) {
+  <!-- Responsive grid layout for user cards -->
+  <div
+    class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-x-6 gap-y-10 justify-items-center"
+  >
+    @for (user of users; track user.id) {
+    <app-user-card [user]="user" />
+    }
+  </div>
+  }
+
+  <!-- Else, show loading spinner -->
+  @else {
+  <div class="flex items-center justify-center p-8" role="status">
+    <div class="text-center">
+      <div
+        class="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-500 mx-auto mb-2"
+      ></div>
+      <p class="text-[#646464]">Loading team members...</p>
+    </div>
+  </div>
+  }
+</section>

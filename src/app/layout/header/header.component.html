@@ -1,0 +1,41 @@
+<!-- Header Bar -->
+<header
+  class="sticky top-0 bg-white shadow-sm flex items-center justify-between px-6 py-2 z-50"
+>
+  <!-- Left Section: Menu button + Search input -->
+  <div class="flex items-center gap-4">
+    <!-- Menu toggle button (shows/hides sidebar) -->
+    <button mat-icon-button aria-label="Toggle Menu" (click)="onToggleMenu()">
+      <mat-icon class="cursor-pointer">menu</mat-icon>
+    </button>
+
+    <!-- Search input (visible on md+ screens) -->
+    <app-search-input
+      class="hidden md:block w-full md:w-80 lg:w-96 max-w-full"
+      [placeholder]="'Search'"
+      (searchChanged)="onSearch($event)"
+    ></app-search-input>
+  </div>
+
+  <!-- Right Section: Notifications + Language selector + User dropdown -->
+  <div class="flex items-center gap-3">
+    <!-- Notifications icon with badge (hidden on small screens) -->
+    <button
+      mat-icon-button
+      matBadge="6"
+      matBadgePosition="above after"
+      aria-label="Notifications"
+      class="notification-badge hidden md:inline-flex"
+    >
+      <mat-icon class="!text-[#4880FF]">notifications</mat-icon>
+    </button>
+
+    <!-- Language selector dropdown -->
+    <app-language-selector
+      (selectionChanged)="onLangChange($event)"
+    ></app-language-selector>
+
+    <!-- User profile dropdown menu -->
+    <app-dropdown [user]="user" [items]="menuItems"></app-dropdown>
+  </div>
+</header>

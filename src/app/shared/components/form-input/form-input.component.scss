@@ -1,0 +1,8 @@
+/* styles.scss or component-specific SCSS */
+.input-field {
+    @apply bg-[#F5F6FA] border border-[#E1E1E1] text-[#202224] text-sm rounded-lg placeholder-[#B9B9B9] focus:outline-none block w-full p-3.5;
+}
+
+.label {
+    @apply block mb-2 text-sm text-[#606060];
+}

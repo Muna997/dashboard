@@ -1,0 +1,56 @@
+<section class="px-6 sm:p-8 min-h-screen">
+  <!-- Page Title -->
+  <h1 class="section-title" aria-level="1">Dashboard</h1>
+
+  <!-- Cards Row -->
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
+    @for (card of cards(); track card.title) {
+    <app-card
+      [title]="card.title"
+      [value]="card.value"
+      [subtitle]="card.subtitle"
+      [subtitleColor]="card.subtitleColor"
+      [icon]="card.icon"
+      [iconColor]="card.iconColor"
+    />
+    }
+  </div>
+  <!-- <Chart Section - Full Width -->
+  <div class="grid grid-cols-1 gap-6 mt-8">
+    <div
+      class="p-5 bg-white rounded-2xl shadow-sm w-full"
+      role="region"
+      aria-label="Sales Chart"
+    >
+      <div class="flex justify-between items-center mb-4">
+        <h1 class="!text-2xl text-2xl font-bold text-[#202224]">
+          Sales Details
+        </h1>
+
+        <!-- Custom select dropdown -->
+        <div class="relative w-max">
+          <select
+            class="appearance-none bg-[#FAFBFC] text-sm font-medium text-gray-500 px-4 py-2 pr-10 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-1 focus:ring-gray-300"
+            (change)="onMonthChange($event)"
+            [value]="selectedMonth()"
+            aria-label="Select month"
+          >
+            @for (month of months; track month) {
+            <option [value]="month">{{ month }}</option>
+            }
+          </select>
+
+          <mat-icon
+            class="!absolute !right-3 !top-1/2 !-translate-y-1/2 !text-gray-400 !pointer-events-none !text-xl"
+            fontIcon="keyboard_arrow_down"
+          ></mat-icon>
+        </div>
+      </div>
+
+      <!-- Chart -->
+      <div class="w-full">
+        <app-chart [chartOptions]="chartOptions()" />
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,50 @@
+<div
+  class="relative text-sm"
+  (click)="toggleDropdown()"
+  role="button"
+  tabindex="0"
+  (keydown.enter)="toggleDropdown()"
+  (keydown.space)="toggleDropdown()"
+  aria-haspopup="true"
+>
+  <!-- Trigger -->
+  <div
+    class="flex items-center px-2 py-2 rounded-xl bg-white cursor-pointer gap-1 md:gap-2"
+  >
+    <span class="text-2xl">{{ selected.flag }}</span>
+
+    <!-- Hide label on small screens -->
+    <span class="hidden md:inline text-[#646464] text-sm font-normal">
+      {{ selected.label }}
+    </span>
+
+    <mat-icon
+      class="ml-0.5 md:ml-1 !text-[#646464] !text-base font-normal"
+      aria-hidden="true"
+    >
+      {{ isOpen ? "keyboard_arrow_up" : "keyboard_arrow_down" }}
+    </mat-icon>
+  </div>
+
+  <!-- Dropdown -->
+  @if (isOpen) {
+  <div
+    class="absolute left-0 mt-2 w-full bg-white rounded-xl shadow-md z-10"
+    role="menu"
+  >
+    @for (lang of items(); track lang.value) {
+    <div
+      (click)="select(lang)"
+      class="flex items-center px-4 py-2 hover:bg-gray-100 cursor-pointer gap-2"
+      role="menuitem"
+      tabindex="0"
+    >
+      <span class="text-2xl">{{ lang.flag }}</span>
+      <span class="hidden md:inline text-[#646464] text-sm font-normal">
+        {{ lang.label }}
+      </span>
+    </div>
+    }
+  </div>
+  }
+</div>
